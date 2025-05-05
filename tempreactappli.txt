@@ -1,48 +1,4 @@
-dashboard backup....................===========
 
-// src/components/Dashboard.js
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import EmployeeForm from './EmployeeForm';
-
-const Dashboard = () => {
-    const [username, setUsername] = useState('');
-    const [showEmployeeForm, setShowEmployeeForm] = useState(false);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const storedUsername = localStorage.getItem('username');
-        if (storedUsername) {
-            setUsername(storedUsername);
-        } else {
-            navigate('/login');
-        }
-    }, [navigate]);
-
-    const handleEmployeeListClick = () => {
-        setShowEmployeeForm(true);
-    };
-
-    return (
-        <div className="dashboard">
-            <h2>Welcome to the Admin Panel</h2>
-            <nav>
-                <ul>
-                    <li><Link to="/dashboard">Home</Link></li>
-                    <li><button onClick={handleEmployeeListClick}>Employee List</button></li>
-                    <li><span>{username}</span></li>
-                    <li><Link to="/">Logout</Link></li>
-                </ul>
-            </nav>
-            {showEmployeeForm ? <EmployeeForm /> : <p>Welcome, {username}! <button onClick={handleEmployeeListClick}>Create Employee</button> </p>}
-         
-
-        </div>
-    );
-};
-
-export default Dashboard;
-=========================================================================================
 
 
 
